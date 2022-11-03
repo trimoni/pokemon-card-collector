@@ -13,10 +13,6 @@
 
 <section class='page-header'>
   <h1>Pokemon Card List</h1>
-  <img src="{% static 'images/pikachu.jpeg' %}" alt="pikachu">
-  <img src="{% static 'images/charizard.jpeg' %}" alt="charizard">
-  <img src="{% static 'images/mewtwo.jpeg' %}" alt="mewtwo">
-  <img src="{% static 'images/snorlax.jpeg' %}" alt="snorlax">
 </section>
 
 <section class='card-container'>
@@ -24,10 +20,14 @@
     <div class='card'>
       <div class='card-content'>
         <div class='card-img-container'>
-          <img src="" alt="">
+          <img src="{% static 'images/'|add:card.name|add:'.jpeg' %}" alt="pikachu">
         </div>
+        <h2 class='card-title'>{{ card.name }}</h2>
+        <p>{{ card.type }}</p>
+        <p>{{ card.value }}</p>
+        <p><small>{{ card.pack }}</small></p>
       </div>
     </div>
-    
+    {% endfor %}
 </section>
 {% endblock %}
