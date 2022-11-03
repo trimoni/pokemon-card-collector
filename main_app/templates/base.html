@@ -6,21 +6,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="" href="" />
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/pokeball.jpg' %}" />
     <title>Pokemon-Card Collector</title>
+    <link rel="stylesheet" type='text/css' href="{% static 'css/base.css' %}">
   </head>
   <body>
     <header>
       <div class="header-logo-container">
         <a href="/">
           <img 
-            src="" 
+            src="{% static 'images/george.png' %}" 
+            width='300'
+            height='150'
             alt="The Pokemon Card Collector Logo" 
           />
         </a>
       </div>
       <nav>
         <ul>
+          <li><a href="/cards"></a></li>
           <li><a href="/about">About</a></li>
         </ul>
       </nav>

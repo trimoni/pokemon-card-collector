@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css"
+  href="{% static 'css/cards/card-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class='page-header'>
+  <h1>Pokemon Card List</h1>
+  <img src="{% static 'images/pikachu.jpeg' %}" alt="pikachu">
+  <img src="{% static 'images/charizard.jpeg' %}" alt="charizard">
+  <img src="{% static 'images/mewtwo.jpeg' %}" alt="mewtwo">
+  <img src="{% static 'images/snorlax.jpeg' %}" alt="snorlax">
+</section>
+
+<section class='card-container'>
+  {% for card in cards %}
+    <div class='card'>
+      <div class='card-content'>
+        <div class='card-img-container'>
+          <img src="" alt="">
+        </div>
+      </div>
+    </div>
+    
+</section>
+{% endblock %}
