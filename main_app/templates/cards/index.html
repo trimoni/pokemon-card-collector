@@ -23,8 +23,8 @@
           <img src="{% static 'images/'|add:card.name|add:'.jpeg' %}" alt="pikachu">
         </div>
         <h2 class='card-title'>{{ card.name }}</h2>
-        <p>{{ card.type }}</p>
-        <p>{{ card.value }}</p>
+        <h3>{{ card.type }}</h3>
+        <h3>{{ card.value }}</h3>
         <p><small>{{ card.pack }}</small></p>
       </div>
     </div>
