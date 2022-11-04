@@ -18,7 +18,7 @@
 <section class='card-container'>
   {% for card in cards %}
     <div class='card'>
-      <a href="/cards/{{ card.id }}"></a>
+      <a href="{% url 'cards_detail' card.id %}"></a>
       <div class='card-content'>
         <div class='card-img-container'>
           <img src="{% static 'images/pikachu.jpeg' %}"alt="pikachu">
