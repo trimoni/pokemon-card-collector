@@ -18,9 +18,10 @@
 <section class='card-container'>
   {% for card in cards %}
     <div class='card'>
+      <a href="/cards/{{ card.id }}"></a>
       <div class='card-content'>
         <div class='card-img-container'>
-          <img src="{% static 'images/'|add:card.name|add:'.jpeg' %}" alt="pikachu">
+          <img src="{% static 'images/pikachu.jpeg' %}"alt="pikachu">
         </div>
         <h2 class='card-title'>{{ card.name }}</h2>
         <h3>{{ card.type }}</h3>
@@ -31,3 +32,7 @@
     {% endfor %}
 </section>
 {% endblock %}
+
+
+
+{% comment %} src="{% static 'images/'|add:card.name|add:'.jpeg' %}"  {% endcomment %}
