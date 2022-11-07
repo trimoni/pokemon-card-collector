@@ -23,6 +23,10 @@
         <h3>{{ card.type }}</h3>
         <h3>{{ card.value }}</h3>
         <p><small>{{ card.pack }}</small></p>
+        <div class='cat-actions'>
+          <a href="{% url 'cards_update' card.id %}" class='btn warn'>Edit</a>
+          <a href="{% url 'cards_delete' card.id %}" class='btn danger'>Delete></a>
+        </div>
   </div>
 </section>
 
