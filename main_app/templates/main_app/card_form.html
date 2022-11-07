@@ -6,9 +6,12 @@
 {% endblock %}
 
 {% block content %}
-
 <div class='page-header'>
+{% if card %}
+  <h1>Edit {{ card.name }}</h1>
+  {% else %}
   <h1>Add a Card</h1>
+  {% endif %}
 </div>
   <form action="" method="post" class="form-container">
     {% csrf_token %}

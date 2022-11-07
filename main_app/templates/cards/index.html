@@ -18,7 +18,7 @@
 <section class='card-container'>
   {% for card in cards %}
     <div class='card'>
-      <a href="{% url 'cards_detail' card.id %}"></a>
+      <a href="{% url 'cards_detail' card.id %}">
       <div class='card-content'>
         <div class='card-img-container'>
           <img src="{% static 'images/pikachu.jpeg' %}"alt="pikachu">
@@ -28,6 +28,7 @@
         <h3>{{ card.value }}</h3>
         <p><small>{{ card.pack }}</small></p>
       </div>
+    </a>
     </div>
     {% endfor %}
 </section>
