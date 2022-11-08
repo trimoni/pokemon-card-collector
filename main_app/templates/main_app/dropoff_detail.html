@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/dropoff/dropoff-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+  
+<div class="card">
+  <div class="card-bg"></div>
+  <div class="card-content">
+    <h2>{{ dropoff.name }}</h2>
+        <p> Let's meet here: {{ dropoff.address }}</p>
+        <p> At this time and date: {{ dropoff.datetime }}</p>
+  </div>
+</div>
+<a href="{% url 'dropoff_update' dropoff.id %}" class="btn warn">Edit</a>
+<a href="{% url 'dropoff_delete' dropoff.id %}" class="btn danger">Delete</a>
+
+{% endblock %}

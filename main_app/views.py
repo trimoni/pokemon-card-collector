@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Card, DropOff
 from .forms import PriceForm
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 
@@ -43,3 +44,17 @@ def add_price(request, card_id):
 class DropOffCreate(CreateView):
   model = DropOff
   fields = '__all__'
+
+class DropOffList(ListView):
+  model = DropOff
+
+class DropOffDetail(DetailView):
+  model = DropOff
+
+class DropOffUpdate(UpdateView):
+  model = DropOff
+  fields = ['name', 'address', 'datetime']
+
+class DropOffDelete(DeleteView):
+  model = DropOff
+  success_url = '/dropoff/'

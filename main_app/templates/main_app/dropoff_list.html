@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/dropoff/dropoff-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>All Dropoffs</h1>
+</section>
+
+<section class="card-container">
+  {% for dropoff in dropoff_list %}
+  <div class="card">
+    <div class="card-bg"></div>
+    <a href="{% url 'dropoff_detail' dropoff.id %}">
+      <div class="card-content">
+        <h2>{{ dropoff.name }}</h2>
+        <p> Let's meet here: {{ dropoff.address }}</p>
+        <p> At this time and date: {{ dropoff.datetime }}</p>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

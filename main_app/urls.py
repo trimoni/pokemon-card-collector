@@ -10,5 +10,9 @@ urlpatterns = [
   path('cards/<int:pk>/update', views.CardUpdate.as_view(), name='cards_update'),
   path('cards/<int:pk>/delete', views.CardDelete.as_view(), name='cards_delete'),
   path('cards/<int:card_id>/add_price/', views.add_price, name='add_price'),
-  path('dropoff/create/', views.DropOffCreate.as_view(), name='dropoff/create'),
+  path('dropoff/create/', views.DropOffCreate.as_view(), name='dropoff_create'),
+  path('dropoff/<int:pk>/', views.DropOffDetail.as_view(), name='dropoff_detail'),
+  path('dropoff/', views.DropOffList.as_view(), name='dropoff_index'),
+  path('dropoff/<int:pk/update/', views.DropOffUpdate.as_view(), name='dropoff_update'),
+  path('dropoff/<int:pk/delete/', views.DropOffDelete.as_view(), name='dropoff_delete'),
 ]
