@@ -21,21 +21,20 @@
     </div>
   </div>
 </section>
-<div class='feedings-toy-container'>
-  <section class='feedings'>
-    <div class='subsection-title'>
+<div class="feedings-toy-container">
+  <section class="feedings">
+    <div class="subsection-title">
       <h2>Price</h2>
     </div>
     <h3>Add a Price</h3>
     <form
       action="{% url 'add_price' card.id %}"
       method="post"
-      class='subsection'  
+      class="subsection"
     >
-    {% csrf_token %}
-    {{ price_form.as_p }}
-    <button type='submit' class='btn submit'>Add Price</button>
-  </form>
+      {% csrf_token %} {{ price_form.as_p }}
+      <button type="submit" class="btn submit">Add Price</button>
+    </form>
     <h3>Other Valuations</h3>
     {% if card.price_set.all.count %}
     <table>
@@ -55,10 +54,30 @@
       </tbody>
     </table>
     {% else %}
-    <div class='subsection-content'>
+    <div class="subsection-content">
       <p>{{card.name}} doesn't have a valuation yet</p>
     </div>
     {% endif %}
+  </section>
+  <section class="toys">
+    <div class="subsection-title">
+      <h2>Clients</h2>
+    </div>
+    <h3>{{card.name}}'s interested buyers</h3>
+    <div class="subsection-content">
+      {% if card.dropoff.count %} {% for dropoff in card.dropoff.all %}
+      <div class="toy-container">
+        <div class="color-block"></div>
+        <a href="{% url 'dropoff_detail' dropoff.id%}">
+          <p>{{dropoff.name}} likes</p>
+        </a>
+      </div>
+      {% endfor %} {% else %}
+      <p class="no-toys">{{card.name}} has no interested buyers</p>
+      {% endif %}
+    </div>
+    <h3>Interested Buyers</h3>
+    <div class="subsection-content">{% comment %} {% endcomment %}</div>
   </section>
 </div>
 

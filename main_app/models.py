@@ -18,11 +18,23 @@ CONDITION = (
   ('Damaged', 'Damaged')
 )
 
+class DropOff(models.Model):
+  name = models.CharField(max_length=100)
+  address = models.CharField(max_length=100)
+  datetime = models.DateTimeField()
+
+  def __str__(self):
+      return self.name
+    
+  def get_absolute_url(self):
+      return reverse("dropoff_detail", kwargs={"pk": self.id})
+
 class Card(models.Model):
   name = models.CharField(max_length=100)
   type = models.CharField(max_length=100)
   value = models.CharField(max_length=100, choices=VALUE, default='COMMON')
   pack =  models.CharField(max_length=100)
+  dropoff = models.ManyToManyField(DropOff)
 
   def __str__(self):
     return self.name
@@ -42,15 +54,5 @@ class Price(models.Model):
     # class Meta:
     #   ordering = ['-money']
 
-class DropOff(models.Model):
-  name = models.CharField(max_length=100)
-  address = models.CharField(max_length=100)
-  datetime = models.DateTimeField()
-
-  def __str__(self):
-      return self.name
-    
-  def get_absolute_url(self):
-      return reverse("dropoff_detail", kwargs={"pk": self.id})
   
   

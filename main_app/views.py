@@ -18,12 +18,13 @@ def cards_index(request):
 
 def cards_detail(request, card_id):
   card = Card.objects.get(id=card_id)
+  dropoff_card_doesnt_have = DropOff.objects.exclude(id__in = card.dropoff.all().values_list('id'))
   price_form = PriceForm()
-  return render(request, 'cards/detail.html', { 'card': card, 'price_form': price_form })
+  return render(request, 'cards/detail.html', { 'card': card, 'price_form': price_form, 'dropoff': dropoff_card_doesnt_have })
 
 class CardCreate(CreateView):
   model = Card
-  fields = '__all__'
+  fields = ['name', 'type', 'value', 'pack']
 
 class CardUpdate(UpdateView):
   model = Card
