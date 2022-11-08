@@ -1,27 +1,20 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block content %}
 
-{% block head %}
-<link rel="stylesheet" type='text/css' href="{% static 'css/home.css' %}">
-{% endblock %}
-
-{% block content %}
-
-<section class='logo-container'>
-  <div class='cat-container'>
-    <img src="" alt="The Pokemon Card Collector">
+<section class="logo-container">
+  <div class="cat-container">
+    <img src="" alt="The Pokemon Card Collector" />
   </div>
-  <img src="" alt="Text reads: Pokemon Card Collector">
+  <img src="" alt="Text reads: Pokemon Card Collector" />
 </section>
+{% if not user.is_authenticated%}
 <section>
-  <form action="{% url 'home' %}" method='post' class='login'>
+  <form action="{% url 'home' %}" method="post" class="login">
     <h1>Login</h1>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" name='next' value={{ next }}>
-    <button type='submit' class='btn submit'>Login</button>
+    {% csrf_token %} {{ form.as_p }}
+    <input type="hidden" name="next" value="{{" next }} />
+    <button type="submit" class="btn submit">Login</button>
   </form>
 </section>
-
-{% endblock %}
-
+{% endif %} {% endblock %}
