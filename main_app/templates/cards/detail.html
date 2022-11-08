@@ -61,7 +61,7 @@
   </section>
   <section class="toys">
     <div class="subsection-title">
-      <h2>Clients</h2>
+      <h2>Buyers</h2>
     </div>
     <h3>{{card.name}}'s interested buyers</h3>
     <div class="subsection-content">
@@ -85,7 +85,7 @@
           <a href="{% url 'dropoff_detail' dropoff.id%}">
             <p>{{dropoff.name}} likes</p>
           </a>
-          <form action="" method='post'>
+          <form action="{% url 'assoc_dropoff' card.id dropoff.id %}" method='post'>
             {% csrf_token %}
             <button type='submit' class='btn submit'>Add Buyer</button>
           </form>

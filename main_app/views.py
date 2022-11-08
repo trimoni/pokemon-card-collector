@@ -59,3 +59,7 @@ class DropOffUpdate(UpdateView):
 class DropOffDelete(DeleteView):
   model = DropOff
   success_url = '/dropoff/'
+
+def assoc_dropoff(request, card_id, dropoff_id):
+  Card.objects.get(id=card_id).dropoff.add(dropoff_id)
+  return redirect('cards_detail', card_id=card_id)
