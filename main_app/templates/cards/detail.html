@@ -77,7 +77,26 @@
       {% endif %}
     </div>
     <h3>Interested Buyers</h3>
-    <div class="subsection-content">{% comment %} {% endcomment %}</div>
+    <div class="subsection-content">
+      {% if dropoff.count %}
+        {% for dropoff in dropoff.all %}
+        <div class="toy-container">
+          <div class="color-block"></div>
+          <a href="{% url 'dropoff_detail' dropoff.id%}">
+            <p>{{dropoff.name}} likes</p>
+          </a>
+          <form action="" method='post'>
+            {% csrf_token %}
+            <button type='submit' class='btn submit'>Add Buyer</button>
+          </form>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class='all-toys'>
+          {{card.name}} has all interested buyers
+        </p>
+      {% endif %}
+    </div>
   </section>
 </div>
 
