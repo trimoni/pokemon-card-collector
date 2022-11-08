@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Card
+from .models import Card, DropOff
+from .forms import PriceForm
 
 # Create your views here.
 
@@ -16,7 +17,8 @@ def cards_index(request):
 
 def cards_detail(request, card_id):
   card = Card.objects.get(id=card_id)
-  return render(request, 'cards/detail.html', { 'card': card })
+  price_form = PriceForm()
+  return render(request, 'cards/detail.html', { 'card': card, 'price_form': price_form })
 
 class CardCreate(CreateView):
   model = Card
@@ -29,3 +31,15 @@ class CardUpdate(UpdateView):
 class CardDelete(DeleteView):
   model = Card
   success_url = '/cards/'
+
+def add_price(request, card_id):
+  form = PriceForm(request.POST)
+  if form.is_valid():
+    new_price = form.save(commit=False)
+    new_price.card_id = card_id
+    new_price.save()
+  return redirect('cards_detail', card_id=card_id)
+
+class DropOffCreate(CreateView):
+  model = DropOff
+  fields = '__all__'
