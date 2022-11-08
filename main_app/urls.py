@@ -13,6 +13,6 @@ urlpatterns = [
   path('dropoff/create/', views.DropOffCreate.as_view(), name='dropoff_create'),
   path('dropoff/<int:pk>/', views.DropOffDetail.as_view(), name='dropoff_detail'),
   path('dropoff/', views.DropOffList.as_view(), name='dropoff_index'),
-  path('dropoff/<int:pk/update/', views.DropOffUpdate.as_view(), name='dropoff_update'),
-  path('dropoff/<int:pk/delete/', views.DropOffDelete.as_view(), name='dropoff_delete'),
+  path('dropoff/<int:pk>/update/', views.DropOffUpdate.as_view(), name='dropoff_update'),
+  path('dropoff/<int:pk>/delete/', views.DropOffDelete.as_view(), name='dropoff_delete'),
 ]
