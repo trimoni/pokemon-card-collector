@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
-def home(request):
+class Home(LoginView):
   template_name = 'home.html'
 
 def about(request):
