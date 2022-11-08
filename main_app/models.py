@@ -41,8 +41,8 @@ class Card(models.Model):
   def __str__(self):
     return self.name
 
-def get_absolute_url(self):
-    return reverse("cards_detail", kwargs={'card_id': self.id})
+  def get_absolute_url(self):
+      return reverse("cards_detail", kwargs={'card_id': self.id})
 
 class Price(models.Model):
   condition = models.CharField(max_length=100, choices=CONDITION, default=CONDITION[0][0])

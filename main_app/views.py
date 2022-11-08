@@ -34,7 +34,7 @@ class CardCreate(LoginRequiredMixin, CreateView):
   fields = ['name', 'type', 'value', 'pack']
 
   def form_valid(self, form):
-    form.instance.user = self.requesr.user
+    form.instance.user = self.request.user
     return super().form_valid(form)
 
 class CardUpdate(LoginRequiredMixin, UpdateView):
