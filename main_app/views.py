@@ -4,6 +4,8 @@ from .models import Card, DropOff
 from .forms import PriceForm
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -26,6 +28,10 @@ def cards_detail(request, card_id):
 class CardCreate(CreateView):
   model = Card
   fields = ['name', 'type', 'value', 'pack']
+
+  def form_valid(self, form):
+    form.instance.user = self.requesr.user
+    return super().form_valid(form)
 
 class CardUpdate(UpdateView):
   model = Card
@@ -64,3 +70,17 @@ class DropOffDelete(DeleteView):
 def assoc_dropoff(request, card_id, dropoff_id):
   Card.objects.get(id=card_id).dropoff.add(dropoff_id)
   return redirect('cards_detail', card_id=card_id)
+
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('cards_index')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'signup.html', context)
