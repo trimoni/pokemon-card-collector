@@ -3,11 +3,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Card, DropOff
 from .forms import PriceForm
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.views import LoginView
 
 # Create your views here.
 
 def home(request):
-  return render(request, 'home.html')
+  template_name = 'home.html'
 
 def about(request):
   return render(request, 'about.html')
