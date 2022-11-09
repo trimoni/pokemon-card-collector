@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block head %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
 <link
   rel="stylesheet"
   type="text/css"
@@ -6,16 +8,16 @@
 />
 {% endblock %} {% block content %}
 
-<section class="cat-container">
-  <div class="cat-img">
-    <img src="{% static 'images/pikachu.jpeg' %}" alt="Pikachu" />
+<section class="card-container">
+  <div class="card-img">
+    <img src="{% static 'images/pokeballcard.jpeg' %}" alt="Pokeball Card" />
   </div>
   <div class="card-details">
     <h2 class="card-title">{{ card.name }}</h2>
     <h2>{{ card.type }}</h2>
     <h2>{{ card.value }}</h2>
     <h2>{{ card.pack }}</h2>
-    <div class="cat-actions">
+    <div class="card-actions">
       <a href="{% url 'cards_update' card.id %}" class="btn warn">Edit</a>
       <a href="{% url 'cards_delete' card.id %}" class="btn danger">Delete></a>
     </div>
