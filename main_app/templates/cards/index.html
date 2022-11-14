@@ -1,39 +1,42 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block head %}
-<link 
-  rel="stylesheet" 
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
   type="text/css"
   href="{% static 'css/cards/card-index.css' %}"
 />
-{% endblock %}
+{% endblock %} {% block content %}
 
-{% block content %}
-
-<section class='page-header'>
+<section class="page-header">
   <h1>Pokemon Card List</h1>
 </section>
 
-<section class='card-container'>
+<section class="card-container">
   {% for card in cards %}
-    <div class='card'>
-      <a href="{% url 'cards_detail' card.id %}">
-      <div class='card-content'>
-        <div class='card-img-container'>
-          <img src="{% static 'images/pokeballcard.jpeg' %}"alt="Pokemon Card">
+  <div class="card">
+    <a href="{% url 'cards_detail' card.id %}">
+      <div class="card-content">
+        <div class="card-img-container">
+          {% if card.photo.url %}
+          <img
+            src="{{card.photo.url}}"
+            alt="A {{card.name}} Card"
+            class="usr-img"
+          />
+          {% else %}
+          <img
+            src="{% static 'images/pokeballcard.jpeg' %}"
+            alt="Pokeball Card"
+          />
+          {% endif %}
         </div>
-        <h2 class='card-title'>{{ card.name }}</h2>
+        <h2 class="card-title">{{ card.name }}</h2>
         <h2>{{ card.type }}</h2>
         <h2>{{ card.value }}</h2>
         <h2>{{ card.pack }}</h2>
       </div>
     </a>
-    </div>
-    {% endfor %}
+  </div>
+  {% endfor %}
 </section>
-{% endblock %}
-
-
-
-{% comment %} src="{% static 'images/'|add:card.name|add:'.jpeg' %}"  {% endcomment %}
+{% endblock %} {% comment %} src="{% static 'images/'|add:card.name|add:'.jpeg'
+%}" {% endcomment %}
