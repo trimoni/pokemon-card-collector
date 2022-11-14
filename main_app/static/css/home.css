@@ -15,6 +15,10 @@ main > section {
   flex-direction: column;
 }
 
+section > h1 {
+  font-size: 100px;
+}
+
 .header-logo-container {
   display: none;
 }

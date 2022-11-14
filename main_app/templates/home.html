@@ -3,10 +3,10 @@
 {% endblock %} {% block content %}
 
 <section class="logo-container">
+  <h1 style="font-size: 35px; text-align: center">POKEMON CARD COLLECTOR</h1>
   <div class="card-container">
     <img src="{% static 'images/pokeballcard.jpeg' %}" alt="The Pokemon Card Collector" />
   </div>
-  <img src="" alt="Text reads: Pokemon Card Collector" />
 </section>
 {% if not user.is_authenticated%}
 <section>
