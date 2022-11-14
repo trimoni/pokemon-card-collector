@@ -97,6 +97,7 @@ def signup(request):
 
 def add_photo(request, card_id):
   photo_file = request.FILES.get('photo-file', None)
+  print('PHOTOFILE', photo_file)
   if photo_file:
     s3 = boto3.client('s3')
     key = uuid.uuid4().hex + photo_file.name[photo_file.name.rfind('.'):]
@@ -107,6 +108,7 @@ def add_photo(request, card_id):
       card_photo = Photo.objects.filter(card_id=card_id)
       if card_photo.first():
         card_photo.first().delete()
+      print(photo, "PHOTO")
       photo.save()
     except Exception as err:
       print('An error occurred uploading file to S3: %s' % err)

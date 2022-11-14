@@ -27,7 +27,7 @@
     <p id="file-name"></p>
     <form
       action="{% url 'add_photo' card.id %}"
-      enctype="multipard/form-data"
+      enctype="multipart/form-data"
       method="POST"
     >
       {% csrf_token %}
