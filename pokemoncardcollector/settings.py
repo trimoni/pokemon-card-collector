@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b2fjgp+7=m3vn@+jeo51bhdu7&+!5o4!@786_&g1zo7q4a=3he'
+# SECRET_KEY = 'django-insecure-b2fjgp+7=m3vn@+jeo51bhdu7&+!5o4!@786_&g1zo7q4a=3he'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG') == 'True'
 
 ALLOWED_HOSTS = []
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
 # Application definition
@@ -85,6 +91,7 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+SECRET_KEY = env('SECRET_KEY')
 
 
 # Password validation
@@ -133,3 +140,8 @@ LOGOUT_REDIRECT_URL = 'home'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Other settings above
+django_heroku.settings(locals())
+
+WSGI_APPLICATION = 'pokemoncardcollector.wsgi.application'

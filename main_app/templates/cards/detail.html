@@ -6,25 +6,26 @@
   type="text/css"
   href="{% static 'css/cards/card-detail.css' %}"
 />
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
 
-<section class="card-container">
-  <div class="card-img">
+<section class='poke-container'>
+  <div class="poke-img">
     <img src="{% static 'images/pokeballcard.jpeg' %}" alt="Pokeball Card" />
   </div>
-  <div class="card-details">
-    <h2 class="card-title">{{ card.name }}</h2>
+  <div class="poke-details">
+    <h2 class="poke-title">{{ card.name }}</h2>
     <h2>{{ card.type }}</h2>
     <h2>{{ card.value }}</h2>
     <h2>{{ card.pack }}</h2>
-    <div class="card-actions">
+    <div class="poke-actions">
       <a href="{% url 'cards_update' card.id %}" class="btn warn">Edit</a>
-      <a href="{% url 'cards_delete' card.id %}" class="btn danger">Delete></a>
+      <a href="{% url 'cards_delete' card.id %}" class="btn danger">Delete</a>
     </div>
   </div>
 </section>
-<div class="feedings-toy-container">
-  <section class="feedings">
+<div class="price-dropoff-container">
+  <section class="price">
     <div class="subsection-title">
       <h2>Price</h2>
     </div>
@@ -61,28 +62,28 @@
     </div>
     {% endif %}
   </section>
-  <section class="toys">
+  <section class="dropoff">
     <div class="subsection-title">
       <h2>Buyers</h2>
     </div>
     <h3>{{card.name}}'s interested buyers</h3>
     <div class="subsection-content">
       {% if card.dropoff.count %} {% for dropoff in card.dropoff.all %}
-      <div class="toy-container">
+      <div class="dropoff-container">
         <div class="color-block"></div>
         <a href="{% url 'dropoff_detail' dropoff.id%}">
           <p>{{dropoff.name}} likes</p>
         </a>
       </div>
       {% endfor %} {% else %}
-      <p class="no-toys">{{card.name}} has no interested buyers</p>
+      <p class="no-dropoff">{{card.name}} has no interested buyers</p>
       {% endif %}
     </div>
     <h3>Interested Buyers</h3>
     <div class="subsection-content">
       {% if dropoff.count %}
         {% for dropoff in dropoff.all %}
-        <div class="toy-container">
+        <div class="dropoff-container">
           <div class="color-block"></div>
           <a href="{% url 'dropoff_detail' dropoff.id%}">
             <p>{{dropoff.name}} likes</p>
@@ -94,7 +95,7 @@
         </div>
         {% endfor %}
         {% else %}
-        <p class='all-toys'>
+        <p class='all-dropoff'>
           {{card.name}} has all interested buyers
         </p>
       {% endif %}
