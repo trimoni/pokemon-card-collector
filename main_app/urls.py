@@ -17,4 +17,5 @@ urlpatterns = [
   path('dropoff/<int:pk>/delete/', views.DropOffDelete.as_view(), name='dropoff_delete'),
   path('cards/<int:card_id>/assoc_dropoff/<int:dropoff_id>/', views.assoc_dropoff, name='assoc_dropoff'),
   path('accounts/signup/', views.signup, name='signup'),
+  path('cards/<int:card_id>/add_photo/', views.add_photo, name='add_photo'),
 ]

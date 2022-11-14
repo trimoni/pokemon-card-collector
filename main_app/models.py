@@ -53,8 +53,12 @@ class Price(models.Model):
   def __str__(self):
     return f"This {self.get_condition_display()} card is worth {self.money} dollars"
 
-    # class Meta:
-    #   ordering = ['-money']
+class Photo(models.Model):
+  url = models.CharField(max_length=250)
+  card = models.OneToOneField(Card, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"Photo for card_id: {self.card_id} @{self.url}"
 
   
   
